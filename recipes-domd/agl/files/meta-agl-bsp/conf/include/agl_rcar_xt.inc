@@ -46,4 +46,7 @@ IMAGE_INSTALL_append_rcar-gen3 = " \
 "
 
 BBMASK .= "|meta-renesas-rcar-gen3/meta-rcar-gen3/recipes-forward-port/"
+# FIXME: this recipe makes problems during recipe parsing
+BBMASK .= "|meta-virtualization/recipes-containers/docker"
+
 OSTREE_BOOTLOADER ?= "u-boot"
