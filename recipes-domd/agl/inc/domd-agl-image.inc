@@ -25,7 +25,7 @@ SRC_URI_append = " \
 # Renesas R-Car
 ################################################################################
 SRCREV_agl-repo = "${AUTOREV}"
-SRCREV_img-proprietary = "6030ba3604495a49361102792743f08499f25106"
+SRCREV_img-proprietary = "ef24526e95ba339c39ef966f2a7e364b563946d2"
 
 SRC_URI_rcar = "repo://gerrit.automotivelinux.org/gerrit/AGL/AGL-repo;protocol=https;branch=dab;manifest=dab_4.0.1.xml;scmdata=keep;name=agl-repo \
     git://git@git.epam.com/epmd-aepr/img-proprietary;protocol=ssh;branch=master;name=img-proprietary;destsuffix=repo/proprietary \
@@ -38,6 +38,9 @@ configure_versions_rcar() {
     cd ${S}
     base_update_conf_value ${local_conf} PREFERRED_VERSION_xen "4.9+git\%"
     base_update_conf_value ${local_conf} PREFERRED_VERSION_u-boot_rcar "v2015.04\%"
+
+    # vGPU settings
+    base_update_conf_value ${local_conf} PVR_NUM_OSID "2"
 }
 
 python do_configure_append_rcar() {
