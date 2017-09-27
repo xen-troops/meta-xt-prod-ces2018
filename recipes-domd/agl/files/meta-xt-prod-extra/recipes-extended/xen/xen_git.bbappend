@@ -1,3 +1,5 @@
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+
 ################################################################################
 # Renesas R-Car
 ################################################################################
@@ -7,7 +9,17 @@ SRCREV_rcar = "${AUTOREV}"
 
 SRC_URI_rcar = "git://github.com/xen-troops/xen.git;protocol=https;branch=vgpu-dev"
 
-FLASK_POLICY_FILE_rcar = "xenpolicy-4.9-rc"
+################################################################################
+# Generic
+################################################################################
+
+# N.B. as Xen doesn't support partial .cfg as kernel does
+# we need to patch it to select GSX IMG as default
+SRC_URI_append = " \
+    file://0001-Make-GSX-IMG-coproc-default.patch \
+"
+
+FLASK_POLICY_FILE = "xenpolicy-${XEN_REL}-rc"
 
 do_deploy_append_rcar () {
     if [ -f ${D}/boot/xen ]; then
