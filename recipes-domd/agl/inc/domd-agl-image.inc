@@ -41,6 +41,9 @@ configure_versions_rcar() {
 
     # vGPU settings
     base_update_conf_value ${local_conf} PVR_NUM_OSID "2"
+
+    # HACK: force ipk instead of rpm b/c it makes troubles to PVR UM build otherwise
+    base_update_conf_value ${local_conf} PACKAGE_CLASSES "package_ipk"
 }
 
 python do_configure_append_rcar() {
