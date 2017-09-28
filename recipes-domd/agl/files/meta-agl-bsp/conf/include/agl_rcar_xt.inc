@@ -28,7 +28,7 @@ PREFERRED_VERSION_gstreamer1.0-plugins-good = "1.6.3"
 PREFERRED_VERSION_gstreamer1.0-plugins-ugly = "1.6.3"
 PREFERRED_VERSION_gstreamer1.0-plugins-vspfilter = "1.0%"
 
-MACHINE_FEATURES_append = " multimedia"
+#MACHINE_FEATURES_append = " multimedia"
 
 DISTRO_FEATURES_append = " use_eva_pkg"
 
@@ -41,7 +41,6 @@ IMAGE_INSTALL_append_rcar-gen3 = " \
 	kernel-module-pvrsrvkm \
 	kernel-module-vsp2 \
 	kernel-module-vspm-if \
-	omx-user-module \
 	weston-bin \
 "
 
@@ -50,5 +49,8 @@ BBMASK .= "|meta-renesas-rcar-gen3/meta-rcar-gen3/recipes-forward-port/"
 BBMASK .= "|meta-virtualization/recipes-containers/docker"
 # XXX: disable smack security so we can boot with nfsroot
 BBMASK .= "|meta-intel-iot-security/meta-security-smack/recipes-kernel/linux"
+
+# remove OMX and dependecies
+BBMASK .= "|kernel-module-uvcs-drv|omx-user-module|gstreamer1.0-omx"
 
 OSTREE_BOOTLOADER ?= "u-boot"
