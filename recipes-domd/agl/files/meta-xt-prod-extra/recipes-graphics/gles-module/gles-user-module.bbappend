@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 PVRUM_URL = "git://git@git.epam.com/epmd-aepr/pvr_um_vgpu_img.git"
-BRANCH = "vgpu-img"
+BRANCH = "master"
 SRCREV = "${AUTOREV}"
 
 PVRUM_BUILD_DIR_r8a7795 = "r8a7795_linux"
