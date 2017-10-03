@@ -25,11 +25,13 @@ KERNEL_DEVICETREE_m3ulcb-xt = "renesas/r8a7796-m3ulcb-domd.dtb"
 # Salvator-X M3
 ###############################################################################
 SRC_URI_append_salvator-x-m3-xt = " \
+    file://r8a7796-salvator-x-dom0.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
     file://r8a7796-salvator-x-domd.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
     file://r8a7796-salvator-x-domu.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
 "
 
 KERNEL_DEVICETREE_salvator-x-m3-xt = " \
+    renesas/r8a7796-salvator-x-dom0.dtb \
     renesas/r8a7796-salvator-x-domd.dtb \
     renesas/r8a7796-salvator-x-domu.dtb \
 "
@@ -43,11 +45,13 @@ do_install_append_salvator-x-m3-xt() {
 # Salvator-X H3
 ###############################################################################
 SRC_URI_append_salvator-x-h3-xt = " \
+    file://r8a7795-salvator-x-dom0.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
     file://r8a7795-salvator-x-domd.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
     file://r8a7795-salvator-x-domu.dts;subdir=git/arch/${ARCH}/boot/dts/renesas \
 "
 
 KERNEL_DEVICETREE_salvator-x-h3-xt = " \
+    renesas/r8a7795-salvator-x-dom0.dtb \
     renesas/r8a7795-salvator-x-domd.dtb \
     renesas/r8a7795-salvator-x-domu.dtb \
 "
