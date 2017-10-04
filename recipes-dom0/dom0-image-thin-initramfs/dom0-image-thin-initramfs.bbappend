@@ -28,7 +28,12 @@ add_to_local_conf() {
     # FIXME: although we do not install Xen we still run as Xen
     # domain, so serial console, used for login shell must be the
     # virtual one, e.g. hvc0
+    # FIXME: meta-virtualization layer will also update this
+    # when DISTRO_FEATURES has "xen" in it. But in our case it is not set,
+    # so still set up the console on our own
     base_update_conf_value ${local_conf} SERIAL_CONSOLE "115200 hvc0"
+
+    base_update_conf_value ${local_conf} PREFERRED_VERSION_xen "4.9.0+git\%"
 }
 
 python do_configure_append() {
