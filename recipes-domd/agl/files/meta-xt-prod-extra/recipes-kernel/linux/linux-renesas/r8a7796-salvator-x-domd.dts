@@ -35,14 +35,25 @@
 #include "r8a7796.dtsi"
 #include <dt-bindings/gpio/gpio.h>
 
+/*
+ * The device tree compiler (DTC) is allocating the phandle from 1 to
+ * onwards. Reserve a high value for the GIC phandle.
+ */
+#define PHANDLE_GIC (65000)
+
 / {
-	passthrough {
-	};
 
 	aliases {
-		serial0 = &scif2;
 		serial1 = &scif1;
 		ethernet0 = &avb;
+	};
+
+	soc {
+		//this must point to Xen interrupt-parent
+		interrupt-parent = <PHANDLE_GIC>;
+	};
+
+	passthrough {
 	};
 
 	avb-mch {
@@ -407,8 +418,6 @@
 	status = "okay";
 	phy-gpios = <&gpio2 11 GPIO_ACTIVE_LOW>;
 
-	iommus = <&ipmmu_ds0 16>;
-
 	phy0: ethernet-phy@0 {
 		rxc-skew-ps = <1500>;
 		rxdv-skew-ps = <420>; /* default */
@@ -521,7 +530,6 @@
 	sd-uhs-sdr104;
 	status = "okay";
 
-	iommus = <&ipmmu_ds1 32>;
 };
 
 &sdhi2 {
@@ -537,8 +545,6 @@
 	bus-width = <8>;
 	non-removable;
 	status = "okay";
-
-	iommus = <&ipmmu_ds1 34>;
 };
 
 &sdhi3 {
@@ -554,8 +560,6 @@
 	sd-uhs-sdr50;
 	sd-uhs-sdr104;
 	status = "okay";
-
-	iommus = <&ipmmu_ds1 35>;
 };
 
 &scif1 {
@@ -750,8 +754,6 @@
 
 &xhci0 {
 	status = "okay";
-
-	iommus = <&ipmmu_hc 12>;
 };
 
 &usb2_phy0 {
@@ -776,37 +778,19 @@
 &ehci0 {
 	status = "okay";
 
-	iommus = <&ipmmu_hc 4>;
 };
 
 &ehci1 {
 	status = "okay";
 
-	iommus = <&ipmmu_hc 5>;
 };
 
 &ohci0 {
 	status = "okay";
-
-	iommus = <&ipmmu_hc 4>;
 };
 
 &ohci1 {
 	status = "okay";
-
-	iommus = <&ipmmu_hc 5>;
-};
-
-&usb_dmac0 {
-	iommus = <&ipmmu_hc 9>;
-};
-
-&usb_dmac1 {
-	iommus = <&ipmmu_hc 10>;
-};
-
-&msiof_ref_clk {
-	clock-frequency = <133333333>;
 };
 
 &msiof0 {
@@ -966,25 +950,7 @@
 	status = "okay";
 };
 
-&gsx {
-	xen,coproc;
-};
-
-&ipmmu_hc {
-	status = "okay";
-};
-
-&ipmmu_ds0 {
-	status = "okay";
-};
-
-&ipmmu_ds1 {
-	status = "okay";
-};
-
-&ipmmu_mm {
-	status = "okay";
-};
+/* ============================ Xen pass through section ============================ */
 
 &dmac0 {
 	/delete-property/iommus;
@@ -997,3 +963,25 @@
 &dmac2 {
 	/delete-property/iommus;
 };
+
+&audma0 {
+	/delete-property/iommus;
+};
+
+&audma1 {
+	/delete-property/iommus;
+};
+
+&msiof_ref_clk {
+	clock-frequency = <133333333>;
+};
+
+/* Xen will provide its own GIC, mask ours */
+&gic {
+	compatible = "";
+ };
+
+&scif2 {
+	status = "disabled";
+};
+

@@ -8,6 +8,10 @@ SRC_URI_append = " \
     file://defconfig \
 "
 
+SRC_URI_append_rcar = " \
+    file://0001-r8a7795-6-.dtsi-Add-ranges-that-AUDMACs-relies-on.patch \
+"
+
 DEPLOYDIR="${XT_SHARED_ROOTFS_DIR}/boot/domd"
 
 ###############################################################################
