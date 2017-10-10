@@ -16,6 +16,7 @@ IMAGE_INSTALL_append = " \
     xen-flask \
     xen-xenstat \
     pulseaudio \
+    alsa-utils \
 "
 
 # Configuration for ARM Trusted Firmware
