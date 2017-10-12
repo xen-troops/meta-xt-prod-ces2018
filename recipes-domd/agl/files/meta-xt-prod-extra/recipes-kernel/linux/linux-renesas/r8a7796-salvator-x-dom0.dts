@@ -1010,8 +1010,24 @@
 	status = "okay";
 };
 
+&ipmmu_vi {
+	status = "okay";
+};
+
 &gsx {
 	xen,coproc;
+};
+
+&fcpvd0 {
+	iommus = <&ipmmu_vi 8>;
+};
+
+&fcpvd1 {
+	iommus = <&ipmmu_vi 9>;
+};
+
+&fcpvd2 {
+	iommus = <&ipmmu_vi 10>;
 };
 
 /* ============================ Xen pass through section ============================ */
@@ -1117,4 +1133,8 @@
 &tsc1		{ xen,passthrough; };
 &tsc2		{ xen,passthrough; };
 &tsc3		{ xen,passthrough; };
+
+&fcpvd0		{ xen,passthrough; };
+&fcpvd1		{ xen,passthrough; };
+&fcpvd2		{ xen,passthrough; };
 
