@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-BRANCH = "vgpu-dev"
+BRANCH = "ces2018"
 SRCREV = "${AUTOREV}"
 
 SRC_URI = " \
