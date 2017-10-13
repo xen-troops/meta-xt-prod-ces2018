@@ -976,18 +976,6 @@
 	clock-frequency = <133333333>;
 };
 
-&fcpvd0 {
-	/delete-property/iommus;
-};
-
-&fcpvd1 {
-	/delete-property/iommus;
-};
-
-&fcpvd2 {
-	/delete-property/iommus;
-};
-
 /* Xen will provide its own GIC, mask ours */
 &gic {
 	compatible = "";
