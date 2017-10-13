@@ -1030,6 +1030,10 @@
 	iommus = <&ipmmu_vi 10>;
 };
 
+&hdmi0 {
+	iommus = <&ipmmu_vi 12>;
+};
+
 /* ============================ Xen pass through section ============================ */
 
 &gpio0		{ xen,passthrough; };
