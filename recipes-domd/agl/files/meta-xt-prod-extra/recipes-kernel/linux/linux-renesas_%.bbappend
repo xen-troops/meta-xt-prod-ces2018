@@ -40,11 +40,6 @@ KERNEL_DEVICETREE_salvator-x-m3-xt = " \
     renesas/r8a7796-salvator-x-domu.dtb \
 "
 
-do_install_append_salvator-x-m3-xt() {
-    install -d ${D}${base_prefix}/xen
-    install -m 0644 ${B}/arch/${ARCH}/boot/dts/renesas/r8a7796-salvator-x-domu.dtb ${D}${base_prefix}/xen/domu.dtb
-}
-
 ###############################################################################
 # Salvator-X H3
 ###############################################################################
@@ -60,11 +55,6 @@ KERNEL_DEVICETREE_salvator-x-h3-xt = " \
     renesas/r8a7795-salvator-x-domu.dtb \
 "
 
-do_install_append_salvator-x-h3-xt() {
-    install -d ${D}${base_prefix}/xen
-    install -m 0644 ${B}/arch/${ARCH}/boot/dts/renesas/r8a7795-salvator-x-domu.dtb ${D}${base_prefix}/xen/domu.dtb
-}
-
 do_deploy_append() {
     for DTB in ${KERNEL_DEVICETREE}
         do
@@ -78,7 +68,4 @@ do_deploy_append() {
               done
         done
 }
-
-PACKAGES += "domu-dtb"
-FILES_domu-dtb = "${base_prefix}/xen/*"
 
