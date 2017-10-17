@@ -10,14 +10,10 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 SRC_URI = "\
-  file://domu.cfg \
   file://bridge-nfsroot.sh \
   file://bridge.sh \
   file://displ_be.cfg \
-  file://domu-nfs-coproc.cfg \
   file://snd_be.cfg \
-  file://cfg-pvback.sh \
-  file://cfg-pvgsx.sh \
 "
 
 S = "${WORKDIR}"
