@@ -741,12 +741,6 @@
 	};
 };
 
-&sata {
-	status = "okay";
-
-	iommus = <&ipmmu_hc 2>;
-};
-
 &sdhi0 {
 	pinctrl-0 = <&sdhi0_pins>;
 	pinctrl-1 = <&sdhi0_pins_uhs>;
