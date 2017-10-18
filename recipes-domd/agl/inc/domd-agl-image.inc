@@ -44,9 +44,6 @@ configure_versions_rcar() {
     base_update_conf_value ${local_conf} PREFERRED_VERSION_xen "4.9+git\%"
     base_update_conf_value ${local_conf} PREFERRED_VERSION_u-boot_rcar "v2015.04\%"
 
-    # vGPU settings
-    base_update_conf_value ${local_conf} PVR_NUM_OSID "2"
-
     # HACK: force ipk instead of rpm b/c it makes troubles to PVR UM build otherwise
     base_update_conf_value ${local_conf} PACKAGE_CLASSES "package_ipk"
 
