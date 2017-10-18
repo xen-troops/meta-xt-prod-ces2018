@@ -1,6 +1,5 @@
 IMAGE_INSTALL_append = " \
     guest-addons \
-    domd-agl-image-copy-kernel \
     libxenbe \
     displbe \
     kmscube \
