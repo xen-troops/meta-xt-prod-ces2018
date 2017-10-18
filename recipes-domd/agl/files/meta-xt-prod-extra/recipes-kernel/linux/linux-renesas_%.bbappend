@@ -1,5 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
+require inc/xt_shared_env.inc
+
 RENESAS_BSP_URL = "git://github.com/xen-troops/linux.git"
 
 BRANCH = "ces2018"
@@ -12,7 +14,7 @@ SRC_URI_append_rcar = " \
     file://0001-r8a7795-6-.dtsi-Add-ranges-that-AUDMACs-relies-on.patch \
 "
 
-DEPLOYDIR="${XT_SHARED_ROOTFS_DIR}/boot/domd"
+DEPLOYDIR="${XT_DIR_ABS_SHARED_BOOT_DOMD}"
 
 ###############################################################################
 # H3ULCB

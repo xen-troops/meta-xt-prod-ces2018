@@ -1,10 +1,8 @@
 LICENSE = "CLOSED"
 
-IMAGES_SRC_DIR="boot/domd"
-# TODO: use Xen defined location for storing domain artifacts
-IMAGES_DST_DIR="xt/domd"
+require inc/xt_shared_env.inc
 
-FILES_${PN} += "${base_prefix}/${IMAGES_DST_DIR}"
+FILES_${PN} += "${base_prefix}${XT_DIR_ABS_ROOTFS_DOMD}"
 
 # FIXME: if not forced and sstate cache is used then an old version of
 # this package (read old DomU kernel images) can be used from cache
@@ -13,11 +11,11 @@ FILES_${PN} += "${base_prefix}/${IMAGES_DST_DIR}"
 # force install so if DomU kernel changes we use the latest binaries
 do_install[nostamp] = "1"
 do_install() {
-   install -d "${D}/${base_prefix}/${IMAGES_DST_DIR}"
-   find "${XT_SHARED_ROOTFS_DIR}/${IMAGES_SRC_DIR}" -iname 'Image*' -exec \
-     cp -f --no-dereference --preserve=links {} "${D}/${base_prefix}/${IMAGES_DST_DIR}" \;
+   install -d "${D}/${base_prefix}${XT_DIR_ABS_ROOTFS_DOMD}"
+   find "${XT_DIR_ABS_SHARED_BOOT_DOMD}" -iname 'Image*' -exec \
+     cp -f --no-dereference --preserve=links {} "${D}/${base_prefix}${XT_DIR_ABS_ROOTFS_DOMD}" \;
 
-   find "${XT_SHARED_ROOTFS_DIR}/${IMAGES_SRC_DIR}" -iname 'dom*.dtb' -exec \
-     cp -f --no-dereference --preserve=links {} "${D}/${base_prefix}/${IMAGES_DST_DIR}" \;
+   find "${XT_DIR_ABS_SHARED_BOOT_DOMD}" -iname 'dom*.dtb' -exec \
+     cp -f --no-dereference --preserve=links {} "${D}/${base_prefix}${XT_DIR_ABS_ROOTFS_DOMD}" \;
 }
 

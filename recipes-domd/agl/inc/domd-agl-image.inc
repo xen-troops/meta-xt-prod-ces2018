@@ -1,10 +1,15 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/../files:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/../../../inc:"
 
 ###############################################################################
 # extra layers and files to be put after Yocto's do_unpack into inner builder
 ###############################################################################
 # these will be populated into the inner build system on do_unpack_xt_extras
-XT_QUIRK_UNPACK_SRC_URI += "file://meta-xt-prod-extra;subdir=repo"
+# N.B. xt_shared_env.inc MUST be listed AFTER meta-xt-prod-extra
+XT_QUIRK_UNPACK_SRC_URI += "\
+    file://meta-xt-prod-extra;subdir=repo \
+    file://xt_shared_env.inc;subdir=repo/meta-xt-prod-extra/inc \
+"
 
 # add new xt-distro machines into AGL
 XT_QUIRK_UNPACK_SRC_URI += "file://meta-agl;subdir=repo"
