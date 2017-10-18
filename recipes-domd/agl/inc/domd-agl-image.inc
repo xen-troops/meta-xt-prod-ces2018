@@ -44,6 +44,14 @@ configure_versions_rcar() {
 
     # HACK: force ipk instead of rpm b/c it makes troubles to PVR UM build otherwise
     base_update_conf_value ${local_conf} PACKAGE_CLASSES "package_ipk"
+
+    # FIXME: normally bitbake fails with error if there are bbappends w/o recipes
+    # which is the case for agl-demo-platform's recipe-platform while building
+    # agl-image-weston: due to AGL's Yocto configuration recipe-platform is only
+    # added to bblayers if building agl-demo-platform, thus making bitbake to
+    # fail if this recipe is absent. Workaround this by allowing bbappends without
+    # corresponding recipies.
+    base_update_conf_value ${local_conf} BB_DANGLINGAPPENDS_WARNONLY "yes"
 }
 
 python do_configure_append_rcar() {
