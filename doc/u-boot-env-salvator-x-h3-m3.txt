@@ -12,7 +12,7 @@ setenv filesize da4e00
 
 setenv dtb_load_tftp tftp 0x48000000 dom0.dtb
 setenv xen_load_tftp tftp 0x48080000 xen-uImage
-setenv initramfs_load_tftp=tftp 0x76000000 uInitramfs
+setenv initramfs_load_tftp tftp 0x76000000 uInitramfs
 setenv kernel_load_tftp tftp 0x7a000000 Image
 setenv xenpolicy_load_tftp tftp 0x7c000000 xenpolicy
 
