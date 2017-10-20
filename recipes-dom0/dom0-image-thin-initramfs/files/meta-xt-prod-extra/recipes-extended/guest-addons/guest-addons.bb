@@ -8,14 +8,18 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
 
 SRC_URI = "\
-    file://domd.cfg \
+    file://domd-salvator-x-m3.cfg \
+    file://domd-salvator-x-h3.cfg \
 "
 
 S = "${WORKDIR}"
 
+DOMD_CONFIG_salvator-x-m3-xt = "domd-salvator-x-m3.cfg"
+DOMD_CONFIG_salvator-x-h3-xt = "domd-salvator-x-h3.cfg"
+
 do_install() {
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
-    install -m 0744 ${WORKDIR}/domd.cfg ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
+    install -m 0744 ${WORKDIR}/${DOMD_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domd.cfg
 }
 
 FILES_${PN} += " \
