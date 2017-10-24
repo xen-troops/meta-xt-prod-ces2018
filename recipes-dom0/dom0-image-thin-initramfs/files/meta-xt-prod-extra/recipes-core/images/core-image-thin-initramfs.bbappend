@@ -5,6 +5,7 @@ IMAGE_INSTALL_append = " \
     xen-xencommons \
     guest-addons \
     domd-install-artifacts \
+    doma-install-artifacts \
 "
 
 generate_uboot_image() {
