@@ -33,7 +33,7 @@ SRCREV_agl-repo = "${AUTOREV}"
 SRCREV_img-proprietary = "ef24526e95ba339c39ef966f2a7e364b563946d2"
 
 SRC_URI_rcar = "repo://gerrit.automotivelinux.org/gerrit/AGL/AGL-repo;protocol=https;branch=dab;manifest=dab_4.0.1.xml;scmdata=keep;name=agl-repo \
-    git://git@git.epam.com/epmd-aepr/img-proprietary;protocol=ssh;branch=master;name=img-proprietary;destsuffix=repo/proprietary \
+    git://git@gitpct.epam.com/epmd-aepr/img-proprietary;protocol=ssh;branch=master;name=img-proprietary;destsuffix=repo/proprietary \
     file://0001-Do-not-try-to-use-XDG-environment-while-setting-up.patch \
 "
 
