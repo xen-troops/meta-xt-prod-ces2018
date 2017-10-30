@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-PVRUM_URL = "git://git@git.epam.com/epmd-aepr/pvr_um_vgpu_img.git"
+PVRUM_URL = "git://git@gitpct.epam.com/epmd-aepr/pvr_um_vgpu_img.git"
 BRANCH = "1.7/4563938-ces2018"
 SRCREV = "${AUTOREV}"
 

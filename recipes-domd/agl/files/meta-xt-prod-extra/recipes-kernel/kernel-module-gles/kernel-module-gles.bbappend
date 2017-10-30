@@ -1,6 +1,6 @@
 require inc/xt_shared_env.inc
 
-PVRKM_URL = "git://git@git.epam.com/epmd-aepr/pvr_km_vgpu_img.git"
+PVRKM_URL = "git://git@gitpct.epam.com/epmd-aepr/pvr_km_vgpu_img.git"
 BRANCH = "1.7/4563938-ces2018"
 SRCREV = "${AUTOREV}"
 
