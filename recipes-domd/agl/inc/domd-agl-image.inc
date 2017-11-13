@@ -19,12 +19,14 @@ XT_QUIRK_UNPACK_SRC_URI += "file://meta-agl-bsp;subdir=repo/meta-agl"
 XT_QUIRK_BB_ADD_LAYER += "meta-xt-prod-extra \
     meta-virtualization \
     meta-selinux \
+    meta-clang \
 "
 
 # N.B. the revision to use must be aligned with Poky's version of AGL to be built with
 SRC_URI_append = " \
     git://git.yoctoproject.org/meta-virtualization;destsuffix=repo/meta-virtualization;branch=morty \
     git://git.yoctoproject.org/meta-selinux;destsuffix=repo/meta-selinux;branch=morty \
+    git://github.com/kraj/meta-clang.git;destsuffix=repo/meta-clang;branch=morty \
 "
 
 # Renesas R-Car
