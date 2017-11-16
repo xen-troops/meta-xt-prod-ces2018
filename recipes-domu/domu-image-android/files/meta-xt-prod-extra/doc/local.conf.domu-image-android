@@ -221,6 +221,12 @@ PREFERRED_PROVIDER_virtual/javac-native = "ecj-bootstrap-native"
 ASSUME_PROVIDED += "repo-native"
 HOSTTOOLS += "repo"
 
+# PVR DDK dependencies
+ASSUME_PROVIDED += "gcc-5-native"
+ASSUME_PROVIDED += "g\+\+-5-native"
+HOSTTOOLS += "gcc-5"
+HOSTTOOLS += "g++-5"
+
 DEPLOY_DIR = "${TMPDIR}/deploy"
 IMAGE_ROOTFS = "${TMPDIR}/rootfs"
 XT_SHARED_ROOTFS_DIR = "${IMAGE_ROOTFS}/shared_rootfs"
