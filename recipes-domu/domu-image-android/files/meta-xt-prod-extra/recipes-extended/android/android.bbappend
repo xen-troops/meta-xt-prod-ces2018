@@ -1,7 +1,11 @@
 SRCREV = "${AUTOREV}"
 
-SRC_URI_append = "repo://github.com/xen-troops/manifests;protocol=https;branch=master;manifest=prod_ces2018/doma.xml;scmdata=keep"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
+SRC_URI_append = " \
+    repo://github.com/xen-troops/manifests;protocol=https;branch=master;manifest=prod_ces2018/doma.xml;scmdata=keep \
+    file://0001-HACK-If-partition-name-wasn-t-present-use-device-nam.patch;patchdir=system/core \
+"
 # put it out of the source tree, so it can be reused after cleanup
 ANDROID_OUT_DIR_COMMON_BASE = "${SSTATE_DIR}/../${PN}-${ANDROID_PRODUCT}-${ANDROID_VARIANT}-${SOC_FAMILY}-out"
 
