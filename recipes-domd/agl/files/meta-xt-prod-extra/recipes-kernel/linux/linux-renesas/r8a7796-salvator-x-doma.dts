@@ -16,6 +16,24 @@
 		};
 	};
 
+	firmware {
+		android {
+			compatible = "android,firmware";
+
+			fstab {
+				compatible = "android,fstab";
+
+				vendor {
+					compatible = "android,vendor";
+					dev = "/dev/block/xvdb";
+					type = "ext4";
+					mnt_flags = "ro,barrier=1";
+					fsmgr_flags = "wait,slotselect,avb";
+				};
+			};
+		};
+	};
+
 	/* keep this to make XEN happy */
 	passthrough {
 	};
