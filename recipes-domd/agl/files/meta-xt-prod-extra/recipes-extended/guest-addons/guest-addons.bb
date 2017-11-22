@@ -10,6 +10,8 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384
 SRC_URI = " \
     file://bridge-nfsroot.sh \
     file://bridge.sh \
+    file://doma_loop_detach.sh \
+    file://doma_loop_setup.sh \
 "
 
 S = "${WORKDIR}"
