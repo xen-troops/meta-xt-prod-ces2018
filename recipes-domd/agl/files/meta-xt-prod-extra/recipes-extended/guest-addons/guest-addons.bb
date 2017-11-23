@@ -19,13 +19,9 @@ S = "${WORKDIR}"
 do_install() {
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}
     install -m 0744 ${WORKDIR}/*.sh ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}
-
-    install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}
-    install -m 0744 ${WORKDIR}/*.cfg ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}
 }
 
 FILES_${PN} += " \
     ${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/*.sh \
-    ${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}/*.cfg \
 "
 
