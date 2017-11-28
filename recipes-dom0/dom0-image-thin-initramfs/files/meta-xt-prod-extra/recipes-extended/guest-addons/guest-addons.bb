@@ -10,7 +10,8 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384
 SRC_URI = "\
     file://domd-salvator-x-m3.cfg \
     file://domd-salvator-x-h3.cfg \
-    file://doma.cfg \
+    file://doma-salvator-x-m3.cfg \
+    file://doma-salvator-x-h3.cfg \
 "
 
 S = "${WORKDIR}"
