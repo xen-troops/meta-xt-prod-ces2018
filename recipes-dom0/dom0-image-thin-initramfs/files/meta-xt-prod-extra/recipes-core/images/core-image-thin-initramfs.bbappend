@@ -3,6 +3,7 @@ DEPENDS += "u-boot-mkimage-native"
 #Add Xen and additional packages to build
 IMAGE_INSTALL_append = " \
     xen-xencommons \
+    xen-xenstat \
     guest-addons \
     domd-install-artifacts \
     doma-install-artifacts \
