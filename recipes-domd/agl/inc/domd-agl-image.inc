@@ -58,6 +58,11 @@ configure_versions_rcar() {
     # fail if this recipe is absent. Workaround this by allowing bbappends without
     # corresponding recipies.
     base_update_conf_value ${local_conf} BB_DANGLINGAPPENDS_WARNONLY "yes"
+
+    # override console specified by default by the meta-rcar-gen3
+    # to be hypervisor's one
+    base_update_conf_value ${local_conf} SERIAL_CONSOLE "115200 hvc0"
+
 }
 
 python do_configure_append_rcar() {
