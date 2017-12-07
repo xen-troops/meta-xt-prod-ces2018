@@ -5,5 +5,4 @@ IMAGE_INSTALL_append = " \
     pulseaudio \
     pulseaudio-server \
     wayland-ivi-extension \
-    displaymanager \
 "
