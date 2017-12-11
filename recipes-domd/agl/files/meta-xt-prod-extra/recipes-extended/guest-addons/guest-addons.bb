@@ -12,7 +12,10 @@ SRC_URI = " \
     file://bridge.sh \
     file://doma_loop_detach.sh \
     file://doma_loop_setup.sh \
+    file://android-disks.sh \
     file://displbe.service \
+    file://android-disks.service \
+    file://android-disks.conf \
 "
 
 S = "${WORKDIR}"
@@ -21,11 +24,23 @@ inherit systemd
 
 PACKAGES += " \
     ${PN}-displbe-service \
+    ${PN}-android-disks-service \
 "
 
-SYSTEMD_PACKAGES = "${PN}-displbe-service"
+SYSTEMD_PACKAGES = " \
+    ${PN}-displbe-service \
+    ${PN}-android-disks-service \
+"
 
 SYSTEMD_SERVICE_${PN}-displbe-service = " displbe.service"
+
+SYSTEMD_SERVICE_${PN}-android-disks-service = " android-disks.service"
+
+FILES_${PN}-android-disks-service = " \
+    ${systemd_system_unitdir}/android-disks.service \
+    ${sysconfdir}/tmpfiles.d/android-disks.conf \
+    ${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/android-disks.sh \
+"
 
 FILES_${PN}-displbe-service = " \
     ${systemd_system_unitdir}/displbe.service \
@@ -37,6 +52,9 @@ do_install() {
 
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${WORKDIR}/*.service ${D}${systemd_system_unitdir}
+
+    install -d ${D}${sysconfdir}/tmpfiles.d
+    install -m 0644 ${WORKDIR}/android-disks.conf ${D}${sysconfdir}/tmpfiles.d/android-disks.conf
 }
 
 FILES_${PN} += " \
