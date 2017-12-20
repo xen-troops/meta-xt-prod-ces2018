@@ -25,7 +25,7 @@ IMAGE_INSTALL_append = " \
 EXTRA_IMAGEDEPENDS += " arm-trusted-firmware"
 
 # u-boot
-EXTRA_IMAGEDEPENDS += " u-boot"
+DEPENDS += " u-boot"
 
 # Dom0 is a generic ARMv8 machine w/o machine overrides,
 # but still needs to know which system we are building,
