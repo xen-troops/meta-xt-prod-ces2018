@@ -9,6 +9,7 @@ IMAGE_INSTALL_append = " \
     guest-addons-run-domd \
     domd-install-artifacts \
     doma-install-artifacts \
+    domf-install-artifacts \
 "
 
 generate_uboot_image() {
