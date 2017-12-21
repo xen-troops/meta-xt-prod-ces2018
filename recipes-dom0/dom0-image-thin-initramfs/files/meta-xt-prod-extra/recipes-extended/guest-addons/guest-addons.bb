@@ -12,6 +12,7 @@ SRC_URI = "\
     file://domd-salvator-x-h3.cfg \
     file://doma-salvator-x-m3.cfg \
     file://doma-salvator-x-h3.cfg \
+    file://domf.cfg \
     file://guest_doma \
     file://guest_domd \
     file://start_doma.sh \
@@ -56,6 +57,7 @@ do_install() {
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
     install -m 0744 ${WORKDIR}/${DOMD_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domd.cfg
     install -m 0744 ${WORKDIR}/${DOMA_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/doma.cfg
+    install -m 0744 ${WORKDIR}/domf.cfg ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domf.cfg
 
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}
     install -d ${D}${sysconfdir}/init.d
