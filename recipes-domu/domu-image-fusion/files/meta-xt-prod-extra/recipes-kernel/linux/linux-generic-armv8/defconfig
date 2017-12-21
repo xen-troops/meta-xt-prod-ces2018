@@ -495,6 +495,7 @@ CONFIG_UNIX=y
 # CONFIG_NETFILTER is not set
 # CONFIG_ATM is not set
 # CONFIG_BRIDGE is not set
+CONFIG_HAVE_NET_DSA=y
 # CONFIG_VLAN_8021Q is not set
 # CONFIG_DECNET is not set
 # CONFIG_LLC2 is not set
@@ -586,6 +587,7 @@ CONFIG_OF_FLATTREE=y
 CONFIG_OF_EARLY_FLATTREE=y
 CONFIG_OF_ADDRESS=y
 CONFIG_OF_IRQ=y
+CONFIG_OF_NET=y
 CONFIG_OF_RESERVED_MEM=y
 # CONFIG_OF_OVERLAY is not set
 # CONFIG_PARPORT is not set
@@ -603,8 +605,7 @@ CONFIG_BLK_DEV_RAM_COUNT=16
 CONFIG_BLK_DEV_RAM_SIZE=4096
 # CONFIG_CDROM_PKTCDVD is not set
 # CONFIG_ATA_OVER_ETH is not set
-# CONFIG_XEN_BLKDEV_FRONTEND is not set
-# CONFIG_XEN_BLKDEV_BACKEND is not set
+CONFIG_XEN_BLKDEV_FRONTEND=y
 
 #
 # Misc devices
@@ -709,7 +710,43 @@ CONFIG_HAVE_PATA_PLATFORM=y
 # CONFIG_ATA is not set
 # CONFIG_MD is not set
 # CONFIG_TARGET_CORE is not set
-# CONFIG_NETDEVICES is not set
+CONFIG_NETDEVICES=y
+CONFIG_NET_CORE=y
+# CONFIG_DUMMY is not set
+# CONFIG_EQUALIZER is not set
+# CONFIG_NET_TEAM is not set
+# CONFIG_MACVLAN is not set
+# CONFIG_MACSEC is not set
+# CONFIG_NETCONSOLE is not set
+# CONFIG_NETPOLL is not set
+# CONFIG_NET_POLL_CONTROLLER is not set
+# CONFIG_TUN_VNET_CROSS_LE is not set
+# CONFIG_VETH is not set
+# CONFIG_NLMON is not set
+
+#
+# CAIF transport drivers
+#
+
+#
+# Distributed Switch Architecture drivers
+#
+# CONFIG_ETHERNET is not set
+# CONFIG_PHYLIB is not set
+# CONFIG_PPP is not set
+# CONFIG_SLIP is not set
+
+#
+# Host-side USB support is needed for USB Network Adapter support
+#
+# CONFIG_WLAN is not set
+
+#
+# Enable WiMAX (Networking options) to see the WiMAX drivers
+#
+# CONFIG_WAN is not set
+CONFIG_XEN_NETDEV_FRONTEND=y
+# CONFIG_ISDN is not set
 # CONFIG_NVM is not set
 
 #
@@ -1087,7 +1124,7 @@ CONFIG_EDAC_SUPPORT=y
 CONFIG_XEN_BALLOON=y
 CONFIG_XEN_SCRUB_PAGES=y
 CONFIG_XEN_DEV_EVTCHN=y
-CONFIG_XEN_BACKEND=y
+# CONFIG_XEN_BACKEND is not set
 CONFIG_XENFS=y
 CONFIG_XEN_COMPAT_XENFS=y
 CONFIG_XEN_SYS_HYPERVISOR=y
