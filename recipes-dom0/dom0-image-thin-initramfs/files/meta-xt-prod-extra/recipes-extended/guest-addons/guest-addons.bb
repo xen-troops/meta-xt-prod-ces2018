@@ -15,6 +15,7 @@ SRC_URI = "\
     file://domf.cfg \
     file://guest_doma \
     file://guest_domd \
+    file://guest_domf \
     file://start_doma.sh \
 "
 
@@ -40,18 +41,25 @@ FILES_${PN}-run-doma += " \
     ${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/start_doma.sh \
 "
 
+FILES_${PN}-run-domf += " \
+    ${sysconfdir}/init.d/guest_domf \
+"
+
 PACKAGES += " \
     ${PN}-run-domd \
     ${PN}-run-doma \
+    ${PN}-run-domf \
 "
 
 # configure init.d scripts
-INITSCRIPT_PACKAGES = "${PN}-run-domd ${PN}-run-doma"
+INITSCRIPT_PACKAGES = "${PN}-run-domd ${PN}-run-doma ${PN}-run-domf"
 
 INITSCRIPT_NAME_${PN}-run-domd = "guest_domd"
 INITSCRIPT_PARAMS_${PN}-run-domd = "defaults 85"
+INITSCRIPT_NAME_${PN}-run-domf = "guest_domf"
+INITSCRIPT_PARAMS_${PN}-run-domf = "defaults 86"
 INITSCRIPT_NAME_${PN}-run-doma = "guest_doma"
-INITSCRIPT_PARAMS_${PN}-run-doma = "defaults 86"
+INITSCRIPT_PARAMS_${PN}-run-doma = "defaults 87"
 
 do_install() {
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
@@ -64,4 +72,5 @@ do_install() {
     install -m 0744 ${WORKDIR}/guest_domd ${D}${sysconfdir}/init.d/
     install -m 0744 ${WORKDIR}/guest_doma ${D}${sysconfdir}/init.d/
     install -m 0744 ${WORKDIR}/start_doma.sh ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/
+    install -m 0744 ${WORKDIR}/guest_domf ${D}${sysconfdir}/init.d/
 }
