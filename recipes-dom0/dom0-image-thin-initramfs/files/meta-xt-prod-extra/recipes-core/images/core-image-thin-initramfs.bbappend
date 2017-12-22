@@ -7,6 +7,7 @@ IMAGE_INSTALL_append = " \
     guest-addons \
     guest-addons-run-doma \
     guest-addons-run-domd \
+    guest-addons-run-domf \
     domd-install-artifacts \
     doma-install-artifacts \
     domf-install-artifacts \
