@@ -12,3 +12,7 @@ SRC_URI = " \
 
 DEPLOYDIR="${XT_DIR_ABS_SHARED_BOOT_DOMF}"
 
+do_deploy_append () {
+    find ${D}/boot -iname "vmlinux*" -exec tar -cJvf ${DEPLOY_DIR_IMAGE}/vmlinux.tar.xz {} \;
+}
+
