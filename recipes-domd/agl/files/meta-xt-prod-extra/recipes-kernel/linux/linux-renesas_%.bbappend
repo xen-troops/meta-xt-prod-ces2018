@@ -70,5 +70,7 @@ do_deploy_append() {
                   break
               done
         done
+
+    find ${D}/boot -iname "vmlinux*" -exec tar -cJvf ${DEPLOY_DIR_IMAGE}/vmlinux.tar.xz {} \;
 }
 
