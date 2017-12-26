@@ -8,5 +8,5 @@ SRC_URI = " \
     file://defconfig \
   "
 do_deploy_append () {
-    find ${D}/boot -iname "vmlinux*" -exec tar -cJvf ${DEPLOY_DIR_IMAGE}/vmlinux.tar.xz {} \;
+    find ${D}/boot -iname "vmlinux*" -exec tar -cJvf ${STAGING_KERNEL_BUILDDIR}/vmlinux.tar.xz {} \;
 }
