@@ -7,6 +7,6 @@ SRC_URI = " \
     git://github.com/xen-troops/linux.git;branch=${BRANCH} \
     file://defconfig \
   "
-do_deploy_append () {
+do_install_append () {
     find ${D}/boot -iname "vmlinux*" -exec tar -cJvf ${DEPLOY_DIR_IMAGE}/vmlinux.tar.xz {} \;
 }
