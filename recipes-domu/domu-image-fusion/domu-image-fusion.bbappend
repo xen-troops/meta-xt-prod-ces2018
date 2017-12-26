@@ -9,7 +9,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/../../inc:"
 XT_QUIRK_UNPACK_SRC_URI += "\
     file://xt_shared_env.inc;subdir=repo/meta-xt-prod-extra/inc \
     file://meta-xt-prod-extra;subdir=repo \
-    file://50_local.conf.inc;subdir=repo/meta-agl/templates/machine/generic-armv8-xt \
 "
 
 XT_QUIRK_BB_ADD_LAYER += " \
