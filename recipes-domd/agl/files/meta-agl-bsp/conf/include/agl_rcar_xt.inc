@@ -47,8 +47,6 @@ IMAGE_INSTALL_append_rcar-gen3 = " \
 BBMASK .= "|meta-renesas-rcar-gen3/meta-rcar-gen3/recipes-forward-port/"
 # FIXME: this recipe makes problems during recipe parsing
 BBMASK .= "|meta-virtualization/recipes-containers/docker"
-# XXX: disable smack security so we can boot with nfsroot
-BBMASK .= "|meta-intel-iot-security/meta-security-smack/recipes-kernel/linux"
 
 # remove OMX and dependecies
 BBMASK .= "|kernel-module-uvcs-drv|omx-user-module|gstreamer1.0-omx"
