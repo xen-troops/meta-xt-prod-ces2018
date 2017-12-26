@@ -56,5 +56,6 @@ do_install() {
     install -m 0744 "${ANDROID_ARTIFACTS_DIR}/${ANDROID_KERNEL_NAME}" "${DEPLOY_DIR_IMAGE}"
     install -m 0744 "${ANDROID_ARTIFACTS_DIR}/${ANDROID_UNPACKED_KERNEL_NAME}" "${DEPLOY_DIR_IMAGE}"
     ln -sfr "${DEPLOY_DIR_IMAGE}/${ANDROID_UNPACKED_KERNEL_NAME}" "${DEPLOY_DIR_IMAGE}/Image"
+    find ${ANDROID_ARTIFACTS_DIR}/obj/KERNEL_OBJ -iname "vmlinux" -exec tar -cJvf ${DEPLOY_DIR_IMAGE}/vmlinux.tar.xz {} \;
 }
 

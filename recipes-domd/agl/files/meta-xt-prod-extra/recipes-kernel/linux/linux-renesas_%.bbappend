@@ -71,6 +71,6 @@ do_deploy_append() {
               done
         done
 
-    find ${D}/boot -iname "vmlinux*" -exec tar -cJvf ${DEPLOY_DIR_IMAGE}/vmlinux.tar.xz {} \;
+    find ${D}/boot -iname "vmlinux*" -exec tar -cJvf ${STAGING_KERNEL_BUILDDIR}/vmlinux.tar.xz {} \;
 }
 
