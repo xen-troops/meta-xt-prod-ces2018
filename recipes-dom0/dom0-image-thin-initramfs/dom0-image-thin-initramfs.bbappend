@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 FILESEXTRAPATHS_prepend := "${THISDIR}/../../inc:"
 
-do_fetch[depends] += "domd-agl-image-weston:do_${BB_DEFAULT_TASK}"
+do_fetch[depends] += "domd-agl-demo-platform:do_${BB_DEFAULT_TASK}"
 do_fetch[depends] += "domu-image-android:do_${BB_DEFAULT_TASK}"
 do_fetch[depends] += "domu-image-fusion:do_${BB_DEFAULT_TASK}"
 
