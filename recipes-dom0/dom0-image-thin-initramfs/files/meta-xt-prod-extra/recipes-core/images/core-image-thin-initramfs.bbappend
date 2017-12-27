@@ -19,7 +19,11 @@ generate_uboot_image() {
     ln -sfr  ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.cpio.gz.uInitramfs ${DEPLOY_DIR_IMAGE}/uInitramfs
 }
 
-IMAGE_POSTPROCESS_COMMAND += " generate_uboot_image; "
+populate_vmlinux () {
+    find ${STAGING_KERNEL_BUILDDIR} -iname "vmlinux*" -exec mv {} ${DEPLOY_DIR_IMAGE} \;
+}
+
+IMAGE_POSTPROCESS_COMMAND += " generate_uboot_image; populate_vmlinux; "
 
 IMAGE_ROOTFS_SIZE = "65535"
 
