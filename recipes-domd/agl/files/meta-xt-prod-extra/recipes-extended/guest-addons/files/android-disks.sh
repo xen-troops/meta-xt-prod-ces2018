@@ -14,10 +14,10 @@ then
 
     cd $RAW_FOLDER && /xt/scripts/doma_loop_setup.sh || exit 1
 else
-    ln -s /dev/mmcblk1p2 $ADISKS_FOLDER/system
-    ln -s /dev/mmcblk1p3 $ADISKS_FOLDER/vendor
-    ln -s /dev/mmcblk1p5 $ADISKS_FOLDER/misc
-    ln -s /dev/mmcblk1p6 $ADISKS_FOLDER/userdata
+    ln -s /dev/mmcblk1p5 $ADISKS_FOLDER/system
+    ln -s /dev/mmcblk1p6 $ADISKS_FOLDER/vendor
+    ln -s /dev/mmcblk1p7 $ADISKS_FOLDER/misc
+    ln -s /dev/mmcblk1p8 $ADISKS_FOLDER/userdata
 fi
 
 xenstore-write drivers/disks/status ready
