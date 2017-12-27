@@ -42,9 +42,3 @@ python do_configure_append() {
     bb.build.exec_func("configure_versions", d)
 }
 
-populate_vmlinux () {
-    find ${STAGING_KERNEL_BUILDDIR} -iname "vmlinux*" -exec mv {} ${DEPLOY_DIR_IMAGE} \;
-}
-
-IMAGE_PREPROCESS_COMMAND += "populate_vmlinux; "
-
