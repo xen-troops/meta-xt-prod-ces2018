@@ -4,8 +4,15 @@ Salvator-X-H3
 setenv bootdelay 3
 setenv baudrate 115200
 
+for tftp boot:
+
 setenv bootcmd run bootcmd_xen_tftp
 setenv bootcmd_xen_tftp 'run xen_load_tftp; run dtb_load_tftp; run kernel_load_tftp; run xenpolicy_load_tftp; run initramfs_load_tftp; bootm 0x48080000 0x76000000 0x48000000'
+
+for SD card boot:
+
+setenv bootcmd run bootcmd_xen_mmc
+setenv bootcmd_xen_mmc 'run mmc_xen_load; run mmc_dtb_load; run mmc_kernel_load; run mmc_xenpolicy_load; run mmc_initramfs_load; bootm 0x48080000 0x76000000 0x48000000'
 
 setenv fileaddr 7a000000
 setenv filesize da4e00
@@ -15,6 +22,13 @@ setenv xen_load_tftp tftp 0x48080000 xen-uImage
 setenv initramfs_load_tftp tftp 0x76000000 uInitramfs
 setenv kernel_load_tftp tftp 0x7a000000 Image
 setenv xenpolicy_load_tftp tftp 0x7c000000 xenpolicy
+
+
+setenv mmc_dtb_load ext2load mmc 0:1 0x48000000 /boot/dom0.dtb
+setenv mmc_initramfs_load ext2load mmc 0:1 0x76000000 /boot/uInitramfs
+setenv mmc_kernel_load ext2load mmc 0:1 0x7a000000 /boot/Image
+setenv mmc_xen_load ext2load mmc 0:1 0x48080000 /boot/xen-uImage
+setenv mmc_xenpolicy_load ext2load mmc 0:1 0x7c000000 /boot/xenpolicy
 
 setenv ethact ravb
 
