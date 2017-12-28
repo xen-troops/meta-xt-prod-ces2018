@@ -484,7 +484,8 @@ CONFIG_NET=y
 #
 # Networking options
 #
-# CONFIG_PACKET is not set
+CONFIG_PACKET=y
+# CONFIG_PACKET_DIAG is not set
 CONFIG_UNIX=y
 # CONFIG_UNIX_DIAG is not set
 CONFIG_XFRM=y
