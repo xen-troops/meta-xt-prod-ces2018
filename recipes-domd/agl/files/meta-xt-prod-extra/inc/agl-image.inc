@@ -2,12 +2,15 @@ IMAGE_INSTALL_append = " \
     guest-addons \
     libxenbe \
     displbe \
+    displaymanager \
+    sndbe \
     guest-addons-displbe-service \
     guest-addons-android-disks-service \
     guest-addons-bridge-up-notification-service \
     guest-addons-bridge-config \
     kmscube \
-    sndbe \
+    cldemo \
+    alsa-utils \
 "
 
 #Add Xen and additional packages to build
@@ -17,8 +20,6 @@ IMAGE_INSTALL_append = " \
     xen-base \
     xen-flask \
     xen-xenstat \
-    pulseaudio \
-    alsa-utils \
 "
 
 # Configuration for ARM Trusted Firmware
