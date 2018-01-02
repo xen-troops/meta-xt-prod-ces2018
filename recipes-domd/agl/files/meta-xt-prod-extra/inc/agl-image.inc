@@ -11,6 +11,7 @@ IMAGE_INSTALL_append = " \
     kmscube \
     cldemo \
     alsa-utils \
+    sensors-emulator \
 "
 
 #Add Xen and additional packages to build
