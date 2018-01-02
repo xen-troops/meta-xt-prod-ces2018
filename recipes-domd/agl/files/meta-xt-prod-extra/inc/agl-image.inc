@@ -15,6 +15,7 @@ IMAGE_INSTALL_append = " \
 
 #Add Xen and additional packages to build
 IMAGE_INSTALL_append = " \
+    dnsmasq \
     nftables \
     dhcp-client \
     xen-base \
