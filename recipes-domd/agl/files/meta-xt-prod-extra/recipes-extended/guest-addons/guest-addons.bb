@@ -20,6 +20,7 @@ SRC_URI = " \
     file://eth0.network \
     file://xenbr0.netdev \
     file://xenbr0.network \
+    file://xenbr0-systemd-networkd.conf \
 "
 
 S = "${WORKDIR}"
@@ -37,6 +38,7 @@ FILES_${PN}-bridge-config = " \
     ${sysconfdir}/systemd/network/eth0.network \
     ${sysconfdir}/systemd/network/xenbr0.netdev \
     ${sysconfdir}/systemd/network/xenbr0.network \
+    ${sysconfdir}/systemd/system/systemd-networkd.service.d/xenbr0-systemd-networkd.conf \
 "
 
 SYSTEMD_PACKAGES = " \
@@ -64,6 +66,9 @@ FILES_${PN}-displbe-service = " \
 FILES_${PN}-bridge-up-notification-service = " \
     ${systemd_system_unitdir}/bridge-up-notification.service \
 "
+RDEPENDS_${PN}-bridge-config = " \
+    ethtool \
+"
 
 do_install() {
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}
@@ -78,6 +83,9 @@ do_install() {
     install -d ${D}${sysconfdir}/systemd/network/
     install -m 0644 ${WORKDIR}/*.network ${D}${sysconfdir}/systemd/network
     install -m 0644 ${WORKDIR}/*.netdev ${D}${sysconfdir}/systemd/network
+
+    install -d ${D}${sysconfdir}/systemd/system/systemd-networkd.service.d
+    install -m 0644 ${WORKDIR}/xenbr0-systemd-networkd.conf ${D}${sysconfdir}/systemd/system/systemd-networkd.service.d
 }
 
 FILES_${PN} = " \
