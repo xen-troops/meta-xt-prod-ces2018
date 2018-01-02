@@ -7,6 +7,7 @@ SRC_URI_append = " \
 
 PACKAGECONFIG_append = " networkd"
 PACKAGECONFIG_append = " iptc"
+PACKAGECONFIG_append = " resolved"
 
 USERADD_ERROR_DYNAMIC = "warn"
 
