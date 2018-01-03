@@ -25,6 +25,7 @@ SRC_URI = " \
     file://xenbr0.network \
     file://xenbr0-systemd-networkd.conf \
     file://port-forward-systemd-networkd.conf \
+    file://sndbe.service \
 "
 
 S = "${WORKDIR}"
@@ -107,12 +108,21 @@ do_install() {
 
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}
     install -m 0744 ${WORKDIR}/${DM_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}/dm.cfg
+
+    install -d ${D}${systemd_user_unitdir}
+    install -m 0644 ${WORKDIR}/sndbe.service ${D}${systemd_user_unitdir}
+    rm -f ${D}${systemd_system_unitdir}/sndbe.service
+
+    install -d ${D}${sysconfdir}/systemd/user/default.target.wants
+    ln -sf ${systemd_user_unitdir}/sndbe.service ${D}${sysconfdir}/systemd/user/default.target.wants
+
 }
 
 FILES_${PN} = " \
     ${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/*.sh \
     ${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}/*.cfg \
     ${systemd_user_unitdir}/display-manager.service \
+    ${systemd_user_unitdir}/sndbe.service \
     ${base_prefix}${sysconfdir}/systemd/user/default.target.wants \
 "
 
