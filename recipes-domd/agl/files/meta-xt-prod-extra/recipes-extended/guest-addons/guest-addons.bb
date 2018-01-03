@@ -24,6 +24,7 @@ SRC_URI = " \
     file://xenbr0.netdev \
     file://xenbr0.network \
     file://xenbr0-systemd-networkd.conf \
+    file://port-forward-systemd-networkd.conf \
 "
 
 S = "${WORKDIR}"
@@ -43,6 +44,7 @@ FILES_${PN}-bridge-config = " \
     ${sysconfdir}/systemd/network/xenbr0.netdev \
     ${sysconfdir}/systemd/network/xenbr0.network \
     ${sysconfdir}/systemd/system/systemd-networkd.service.d/xenbr0-systemd-networkd.conf \
+    ${sysconfdir}/systemd/system/systemd-networkd.service.d/port-forward-systemd-networkd.conf \
 "
 
 SYSTEMD_PACKAGES = " \
@@ -100,6 +102,7 @@ do_install() {
 
     install -d ${D}${sysconfdir}/systemd/system/systemd-networkd.service.d
     install -m 0644 ${WORKDIR}/xenbr0-systemd-networkd.conf ${D}${sysconfdir}/systemd/system/systemd-networkd.service.d
+    install -m 0644 ${WORKDIR}/port-forward-systemd-networkd.conf ${D}${sysconfdir}/systemd/system/systemd-networkd.service.d
 
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}
     install -m 0744 ${WORKDIR}/${DM_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}/dm.cfg
