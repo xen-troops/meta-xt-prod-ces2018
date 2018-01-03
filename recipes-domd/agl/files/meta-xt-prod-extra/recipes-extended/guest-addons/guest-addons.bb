@@ -18,6 +18,8 @@ SRC_URI = " \
     file://android-disks.conf \
     file://bridge-up-notification.service \
     file://display-manager.service \
+    file://dm-salvator-x-m3.cfg \
+    file://dm-salvator-x-h3.cfg \
     file://eth0.network \
     file://xenbr0.netdev \
     file://xenbr0.network \
@@ -79,6 +81,9 @@ FILES_${PN}-display-manager.service = " \
     ${systemd_system_unitdir}/display-manager.service \
 "
 
+DM_CONFIG_salvator-x-m3-xt = "dm-salvator-x-m3.cfg"
+DM_CONFIG_salvator-x-h3-xt = "dm-salvator-x-h3.cfg"
+
 do_install() {
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}
     install -m 0744 ${WORKDIR}/*.sh ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}
@@ -95,9 +100,13 @@ do_install() {
 
     install -d ${D}${sysconfdir}/systemd/system/systemd-networkd.service.d
     install -m 0644 ${WORKDIR}/xenbr0-systemd-networkd.conf ${D}${sysconfdir}/systemd/system/systemd-networkd.service.d
+
+    install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}
+    install -m 0744 ${WORKDIR}/${DM_CONFIG} ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}/dm.cfg
 }
 
 FILES_${PN} = " \
     ${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/*.sh \
+    ${base_prefix}${XT_DIR_ABS_ROOTFS_CFG}/*.cfg \
 "
 
