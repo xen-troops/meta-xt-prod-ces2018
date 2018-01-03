@@ -17,6 +17,7 @@ SRC_URI = " \
     file://android-disks.service \
     file://android-disks.conf \
     file://bridge-up-notification.service \
+    file://display-manager.service \
     file://eth0.network \
     file://xenbr0.netdev \
     file://xenbr0.network \
@@ -32,6 +33,7 @@ PACKAGES += " \
     ${PN}-displbe-service \
     ${PN}-android-disks-service \
     ${PN}-bridge-up-notification-service \
+    ${PN}-display-manager.service \
 "
 
 FILES_${PN}-bridge-config = " \
@@ -45,6 +47,7 @@ SYSTEMD_PACKAGES = " \
     ${PN}-displbe-service \
     ${PN}-android-disks-service \
     ${PN}-bridge-up-notification-service \
+    ${PN}-display-manager.service \
 "
 
 SYSTEMD_SERVICE_${PN}-displbe-service = " displbe.service"
@@ -52,6 +55,8 @@ SYSTEMD_SERVICE_${PN}-displbe-service = " displbe.service"
 SYSTEMD_SERVICE_${PN}-android-disks-service = " android-disks.service"
 
 SYSTEMD_SERVICE_${PN}-bridge-up-notification-service = " bridge-up-notification.service"
+
+SYSTEMD_SERVICE_${PN}-display-manager.service = " display-manager.service"
 
 FILES_${PN}-android-disks-service = " \
     ${systemd_system_unitdir}/android-disks.service \
@@ -68,6 +73,10 @@ FILES_${PN}-bridge-up-notification-service = " \
 "
 RDEPENDS_${PN}-bridge-config = " \
     ethtool \
+"
+
+FILES_${PN}-display-manager.service = " \
+    ${systemd_system_unitdir}/display-manager.service \
 "
 
 do_install() {
