@@ -4,6 +4,7 @@ DEPENDS += "u-boot-mkimage-native"
 IMAGE_INSTALL_append = " \
     xen-xencommons \
     xen-xenstat \
+    xen-misc \
     guest-addons \
     guest-addons-run-doma \
     guest-addons-run-domd \
