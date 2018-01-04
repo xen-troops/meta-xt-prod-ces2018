@@ -109,7 +109,8 @@ def state_update_loop(emulator):
         data = emulator.get_data()
         data['timestamp'] = time.time()
         current_state = data
-        print(data)
+        # Uncomment for DEBUG printouts
+        #print(data)
         time.sleep(EMULATOR_UPDATE_TIME)
 
 
