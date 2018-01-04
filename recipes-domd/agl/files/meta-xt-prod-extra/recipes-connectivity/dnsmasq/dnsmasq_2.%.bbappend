@@ -1,3 +1,13 @@
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+
+SRC_URI += " \
+    file://depend_resolved.conf \
+"
+
+FILES_${PN} += " \
+    ${sysconfdir}/systemd/system/dnsmasq.service.d/depend_resolved.conf \
+"
+
 do_install_append() {
     # Make dnsmasq listen only on bridge interface
     echo "interface=xenbr0" >> ${D}${sysconfdir}/dnsmasq.conf
@@ -13,4 +23,8 @@ do_install_append() {
 
     # Use resolve.conf provided by systemd-resolved
     echo "resolv-file=/run/systemd/resolve/resolv.conf" >> ${D}${sysconfdir}/dnsmasq.conf
+
+    # Add dependency on systemd-resolved
+    install -d ${D}${sysconfdir}/systemd/system/dnsmasq.service.d
+    install -m 0644 ${WORKDIR}/depend_resolved.conf ${D}${sysconfdir}/systemd/system/dnsmasq.service.d/
 }
