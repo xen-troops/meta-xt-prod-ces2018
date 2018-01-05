@@ -9,6 +9,7 @@ IMAGE_INSTALL_append = " \
     guest-addons-run-doma \
     guest-addons-run-domd \
     guest-addons-run-domf \
+    guest-addons-run-vcpu_pin \
     domd-install-artifacts \
     doma-install-artifacts \
     domf-install-artifacts \
