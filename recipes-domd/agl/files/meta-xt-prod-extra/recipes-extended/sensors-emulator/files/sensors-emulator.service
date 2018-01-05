@@ -1,6 +1,6 @@
 [Unit]
 Description=Car sensors data emulator
-Requires=systemd-networkd.service
+Wants=systemd-networkd.service
 After=systemd-networkd.service
 
 [Service]
