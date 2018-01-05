@@ -17,6 +17,7 @@ SRC_URI = "\
     file://guest_domd \
     file://guest_domf \
     file://start_guest.sh \
+    file://dom0_vcpu_pin.sh \
 "
 
 S = "${WORKDIR}"
@@ -45,14 +46,19 @@ FILES_${PN}-run-domf += " \
     ${sysconfdir}/init.d/guest_domf \
 "
 
+FILES_${PN}-run-vcpu_pin += " \
+    ${sysconfdir}/init.d/dom0_vcpu_pin.sh \
+"
+
 PACKAGES += " \
     ${PN}-run-domd \
     ${PN}-run-doma \
     ${PN}-run-domf \
+    ${PN}-run-vcpu_pin \
 "
 
 # configure init.d scripts
-INITSCRIPT_PACKAGES = "${PN}-run-domd ${PN}-run-doma ${PN}-run-domf"
+INITSCRIPT_PACKAGES = "${PN}-run-domd ${PN}-run-doma ${PN}-run-domf ${PN}-run-vcpu_pin"
 
 INITSCRIPT_NAME_${PN}-run-domd = "guest_domd"
 INITSCRIPT_PARAMS_${PN}-run-domd = "defaults 85"
@@ -60,6 +66,8 @@ INITSCRIPT_NAME_${PN}-run-domf = "guest_domf"
 INITSCRIPT_PARAMS_${PN}-run-domf = "defaults 86"
 INITSCRIPT_NAME_${PN}-run-doma = "guest_doma"
 INITSCRIPT_PARAMS_${PN}-run-doma = "defaults 87"
+INITSCRIPT_NAME_${PN}-run-vcpu_pin = "dom0_vcpu_pin.sh"
+INITSCRIPT_PARAMS_${PN}-run-vcpu_pin = "defaults 81"
 
 do_install() {
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
@@ -73,4 +81,5 @@ do_install() {
     install -m 0744 ${WORKDIR}/guest_doma ${D}${sysconfdir}/init.d/
     install -m 0744 ${WORKDIR}/start_guest.sh ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/
     install -m 0744 ${WORKDIR}/guest_domf ${D}${sysconfdir}/init.d/
+    install -m 0744 ${WORKDIR}/dom0_vcpu_pin.sh ${D}${sysconfdir}/init.d/
 }
