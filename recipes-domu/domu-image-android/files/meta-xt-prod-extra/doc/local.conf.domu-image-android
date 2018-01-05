@@ -224,8 +224,12 @@ HOSTTOOLS += "repo"
 # PVR DDK dependencies
 ASSUME_PROVIDED += "gcc-5-native"
 ASSUME_PROVIDED += "g\+\+-5-native"
+ASSUME_PROVIDED += "pigz"
+ASSUME_PROVIDED += "unpigz"
 HOSTTOOLS += "gcc-5"
 HOSTTOOLS += "g++-5"
+HOSTTOOLS += "pigz"
+HOSTTOOLS += "unpigz"
 
 DEPLOY_DIR = "${TMPDIR}/deploy"
 IMAGE_ROOTFS = "${TMPDIR}/rootfs"
