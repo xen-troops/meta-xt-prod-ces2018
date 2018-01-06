@@ -27,6 +27,12 @@ DOMD_CONFIG_salvator-x-h3-xt = "domd-salvator-x-h3.cfg"
 DOMA_CONFIG_salvator-x-m3-xt = "doma-salvator-x-m3.cfg"
 DOMA_CONFIG_salvator-x-h3-xt = "doma-salvator-x-h3.cfg"
 
+DOM0_ALLOWED_PCPUS_salvator-x-m3-xt = "2-5"
+DOM0_ALLOWED_PCPUS_salvator-x-h3-xt = "4-7"
+
+DOMF_ALLOWED_PCPUS_salvator-x-m3-xt = "2-5"
+DOMF_ALLOWED_PCPUS_salvator-x-h3-xt = "4-7"
+
 FILES_${PN} = " \
     ${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/*.cfg \
 "
@@ -82,4 +88,10 @@ do_install() {
     install -m 0744 ${WORKDIR}/start_guest.sh ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/
     install -m 0744 ${WORKDIR}/guest_domf ${D}${sysconfdir}/init.d/
     install -m 0744 ${WORKDIR}/dom0_vcpu_pin.sh ${D}${sysconfdir}/init.d/
+
+    # Fixup a number of PCPUs the VCPUs of DomF must run on
+    sed -i "s/DOMF_ALLOWED_PCPUS/${DOMF_ALLOWED_PCPUS}/g" ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domf.cfg
+
+    # Fixup a number of PCPUs the VCPUs of Dom0 must run on
+    sed -i "s/DOM0_ALLOWED_PCPUS/${DOM0_ALLOWED_PCPUS}/g" ${D}${sysconfdir}/init.d/dom0_vcpu_pin.sh
 }
