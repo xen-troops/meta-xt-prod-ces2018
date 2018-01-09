@@ -51,6 +51,9 @@ configure_versions() {
     base_update_conf_value ${local_conf} BB_DANGLINGAPPENDS_WARNONLY "yes"
 
     base_update_conf_value ${local_conf} SERIAL_CONSOLE "115200 hvc0"
+
+    # set default timezone to Las Vegas
+    base_update_conf_value ${local_conf} DEFAULT_TIMEZONE "US/Pacific"
 }
 
 python do_configure_append() {
