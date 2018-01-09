@@ -18,6 +18,8 @@ IMAGE_INSTALL_append = " \
 IMAGE_INSTALL_append = " \
     dnsmasq \
     nftables \
+    ntpdate-systemd \
+    tzdata \
     dhcp-client \
     xen-base \
     xen-flask \
