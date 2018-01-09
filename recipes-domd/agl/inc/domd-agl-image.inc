@@ -63,6 +63,8 @@ configure_versions_rcar() {
     # to be hypervisor's one
     base_update_conf_value ${local_conf} SERIAL_CONSOLE "115200 hvc0"
 
+    # set default timezone to Las Vegas
+    base_update_conf_value ${local_conf} DEFAULT_TIMEZONE "US/Pacific"
 }
 
 python do_configure_append_rcar() {
