@@ -18,6 +18,7 @@ SRC_URI = "\
     file://guest_domf \
     file://start_guest.sh \
     file://dom0_vcpu_pin.sh \
+    file://xt_set_root_dev_cfg.sh \
 "
 
 S = "${WORKDIR}"
@@ -56,15 +57,20 @@ FILES_${PN}-run-vcpu_pin += " \
     ${sysconfdir}/init.d/dom0_vcpu_pin.sh \
 "
 
+FILES_${PN}-run-set_root_dev += " \
+    ${sysconfdir}/init.d/xt_set_root_dev_cfg.sh \
+"
+
 PACKAGES += " \
     ${PN}-run-domd \
     ${PN}-run-doma \
     ${PN}-run-domf \
     ${PN}-run-vcpu_pin \
+    ${PN}-run-set_root_dev \
 "
 
 # configure init.d scripts
-INITSCRIPT_PACKAGES = "${PN}-run-domd ${PN}-run-doma ${PN}-run-domf ${PN}-run-vcpu_pin"
+INITSCRIPT_PACKAGES = "${PN}-run-domd ${PN}-run-doma ${PN}-run-domf ${PN}-run-vcpu_pin ${PN}-run-set_root_dev"
 
 INITSCRIPT_NAME_${PN}-run-domd = "guest_domd"
 INITSCRIPT_PARAMS_${PN}-run-domd = "defaults 85"
@@ -74,6 +80,9 @@ INITSCRIPT_NAME_${PN}-run-doma = "guest_doma"
 INITSCRIPT_PARAMS_${PN}-run-doma = "defaults 87"
 INITSCRIPT_NAME_${PN}-run-vcpu_pin = "dom0_vcpu_pin.sh"
 INITSCRIPT_PARAMS_${PN}-run-vcpu_pin = "defaults 81"
+# must run before any domain creation
+INITSCRIPT_NAME_${PN}-run-set_root_dev = "xt_set_root_dev_cfg.sh"
+INITSCRIPT_PARAMS_${PN}-run-set_root_dev = "defaults 82"
 
 do_install() {
     install -d ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}
@@ -88,6 +97,7 @@ do_install() {
     install -m 0744 ${WORKDIR}/start_guest.sh ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_SCRIPTS}/
     install -m 0744 ${WORKDIR}/guest_domf ${D}${sysconfdir}/init.d/
     install -m 0744 ${WORKDIR}/dom0_vcpu_pin.sh ${D}${sysconfdir}/init.d/
+    install -m 0744 ${WORKDIR}/xt_set_root_dev_cfg.sh ${D}${sysconfdir}/init.d/
 
     # Fixup a number of PCPUs the VCPUs of DomF must run on
     sed -i "s/DOMF_ALLOWED_PCPUS/${DOMF_ALLOWED_PCPUS}/g" ${D}${base_prefix}${XT_DIR_ABS_ROOTFS_DOM_CFG}/domf.cfg
