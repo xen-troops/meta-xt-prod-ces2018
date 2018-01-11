@@ -54,6 +54,20 @@ setenv emmc_kernel_load ext2load mmc 1:1 0x7a000000 /boot/Image
 setenv emmc_xen_load ext2load mmc 1:1 0x48080000 /boot/xen-uImage
 setenv emmc_xenpolicy_load ext2load mmc 1:1 0x7c000000 /boot/xenpolicy
 
+Bootloaders from eMMC:
+===================================
+In case of boot SoC from the eMMC boot partition 1 (50MHz x8 bus width mode) instead of Serial Flash,
+we have an ability to flash bootloader image(s) right here in U-Boot (images must be in raw binary format).
+Partitions and offsets the images need to be flashed to were retrieved here:
+https://github.com/renesas-rcar/flash_writer/blob/rcar_gen3/docs/application-note.md#348-write-to-the-s-record-format-images-to-the-emmc
+
+setenv flash_bootparam_sa0 'tftp 0x48000000 bootparam_sa0.bin; mmc dev 1 1; mmc write 0x48000000 0x0 0x1E;'
+setenv flash_bl2 'tftp 0x48000000 bl2.bin; mmc dev 1 1; mmc write 0x48000000 0x1E 0x162;'
+setenv flash_cert_header_sa6 'tftp 0x48000000 cert_header_sa6_emmc.bin; mmc dev 1 1; mmc write 0x48000000 0x180 0x80;'
+setenv flash_bl31 'tftp 0x48000000 bl31.bin; mmc dev 1 1; mmc write 0x48000000 0x200 0xE00;'
+setenv flash_tee 'tftp 0x48000000 tee.bin; mmc dev 1 1; mmc write 0x48000000 0x1000 0x400;'
+setenv flash_u_boot 'tftp 0x48000000 u-boot.bin; mmc dev 1 2; mmc write 0x48000000 0x0 0x800;'
+setenv flash_loaders 'run flash_bootparam_sa0; run flash_bl2; run flash_cert_header_sa6; run flash_bl31; run flash_tee; run flash_u_boot;'
 
 setenv ethact ravb
 
