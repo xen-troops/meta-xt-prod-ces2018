@@ -15,3 +15,8 @@ python () {
         d.setVarFlag("WESTONOUTPUT4", "mode", "off")
 }
 
+python () {
+    if "salvator-x-m3-xt" in d.getVar("MACHINEOVERRIDES", expand=True):
+        d.setVarFlag("DEFAULT_SCREEN", "transform", "0")
+}
+
