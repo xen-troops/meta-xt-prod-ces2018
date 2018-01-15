@@ -3,6 +3,12 @@ IMAGE_INSTALL_append = " \
     dpkg \
     rpm \
     opkg \
+    wget \
+    vim \
+    e2fsprogs \
+    dosfstools \
+    bash \
+    rsync \
 "
 
 IMAGE_ROOTFS_SIZE = "65535"
