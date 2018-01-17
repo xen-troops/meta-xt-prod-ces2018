@@ -30,4 +30,7 @@ do_deploy_append_rcar () {
     if [ -f ${D}/boot/${FLASK_POLICY_FILE} ]; then
         ln -sfr ${DEPLOYDIR}/${FLASK_POLICY_FILE} ${DEPLOYDIR}/xenpolicy
     fi
+
+    # assuming xen-syms always present
+    tar -cJvf ${DEPLOYDIR}/xen-syms.tar.xz ${S}/xen/xen-syms
 }
