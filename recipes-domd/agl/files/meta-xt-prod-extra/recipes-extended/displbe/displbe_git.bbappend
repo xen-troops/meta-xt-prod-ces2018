@@ -3,7 +3,7 @@
 ################################################################################
 SRCREV_rcar = "${AUTOREV}"
 
-SRC_URI_append_rcar = " git://github.com/xen-troops/displ_be.git;protocol=https;branch=master"
+SRC_URI_append_rcar = " git://github.com/xen-troops/displ_be.git;protocol=https;branch=ces2018"
 
 DEPENDS += " wayland-ivi-extension"
 

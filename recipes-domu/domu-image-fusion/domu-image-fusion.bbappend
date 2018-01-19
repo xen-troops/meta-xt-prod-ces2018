@@ -29,8 +29,8 @@ XT_QUIRK_UNPACK_SRC_URI += " \
     file://${WORKDIR}/${FUSION_GIT}/agl-telemetry;subdir=repo/meta-agl-devel/templates/feature \
 "
 
-SRCREV_fusion = "${AUTOREV}"
-SRCREV_metago = "${AUTOREV}"
+SRCREV_fusion = "93064cdddc24a0e7cf0ad06a967eca4280cde27d"
+SRCREV_metago = "514b2a80a2a4235687e92fb28328bb3e7c2d6c74"
 
 XT_AGL_FEATURES += "agl-telemetry"
 

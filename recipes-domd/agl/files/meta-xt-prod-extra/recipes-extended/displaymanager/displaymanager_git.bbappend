@@ -1,6 +1,6 @@
 SRCREV = "${AUTOREV}"
 
-SRC_URI_append = " git://github.com/xen-troops/DisplayManager.git;protocol=https;branch=master"
+SRC_URI_append = " git://github.com/xen-troops/DisplayManager.git;protocol=https;branch=ces2018"
 
 RDEPENDS_${PN} += " dbus-cpp"
 
