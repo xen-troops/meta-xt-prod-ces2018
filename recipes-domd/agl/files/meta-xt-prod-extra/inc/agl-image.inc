@@ -12,6 +12,7 @@ IMAGE_INSTALL_append = " \
     cldemo \
     alsa-utils \
     telemetry-emulator \
+    aos-vis \
 "
 
 #Add Xen and additional packages to build
