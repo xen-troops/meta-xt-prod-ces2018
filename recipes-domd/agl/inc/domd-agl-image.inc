@@ -16,7 +16,10 @@ XT_QUIRK_UNPACK_SRC_URI += "file://meta-agl;subdir=repo"
 XT_QUIRK_UNPACK_SRC_URI += "file://meta-agl-bsp;subdir=repo/meta-agl"
 
 # these layers will be added to bblayers.conf on do_configure
-XT_QUIRK_BB_ADD_LAYER += "meta-xt-prod-extra"
+XT_QUIRK_BB_ADD_LAYER += " \
+    meta-xt-prod-extra \
+    oe-meta-go \
+"
 
 # Override revision of AGL auxiliary layers
 # N.B. the revision to use must be aligned with Poky's version of AGL to be built with
@@ -30,6 +33,15 @@ SRCREV_img-proprietary = "ef24526e95ba339c39ef966f2a7e364b563946d2"
 SRC_URI_rcar = "repo://gerrit.automotivelinux.org/gerrit/AGL/AGL-repo;protocol=https;branch=dab;manifest=dab_4.0.2.xml;scmdata=keep;name=agl-repo \
     git://git@gitpct.epam.com/epmd-aepr/img-proprietary;protocol=ssh;branch=master;name=img-proprietary;destsuffix=repo/proprietary \
     file://0001-Do-not-try-to-use-XDG-environment-while-setting-up.patch \
+"
+
+SRCREV_metago = "${AUTOREV}"
+
+SRC_URI_rcar_append = " \
+    git://github.com/mem/oe-meta-go.git;protocol=https;destsuffix=repo/oe-meta-go;branch=master;name=metago \
+    file://0001-add-go-version-1.10.1.patch \
+    file://0002-add-golang.org-x-sys-package.patch \
+    file://0003-add-CGO_ENABLED-variable.patch \
 "
 
 configure_versions_rcar() {
