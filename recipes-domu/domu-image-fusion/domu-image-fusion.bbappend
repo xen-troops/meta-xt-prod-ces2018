@@ -13,11 +13,15 @@ XT_QUIRK_UNPACK_SRC_URI += "\
 
 XT_QUIRK_BB_ADD_LAYER += " \
     meta-xt-prod-extra \
+    oe-meta-go \
 "
 
 SRC_URI = "\
     repo://gerrit.automotivelinux.org/gerrit/AGL/AGL-repo;protocol=https;branch=dab;manifest=dab_4.0.2.xml;scmdata=keep;name=agl-repo \
     git://github.com/mem/oe-meta-go.git;protocol=https;destsuffix=repo/oe-meta-go;branch=master;name=metago \
+    file://0001-add-go-version-1.10.1.patch \
+    file://0002-add-golang.org-x-sys-package.patch \
+    file://0003-add-CGO_ENABLED-variable.patch \
 "
 
 SRCREV_metago = "${AUTOREV}"
