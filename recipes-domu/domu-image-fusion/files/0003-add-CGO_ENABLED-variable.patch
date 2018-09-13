@@ -1,0 +1,33 @@
+From 020d5ede59bbfd63af21d700b53353a08fa73e24 Mon Sep 17 00:00:00 2001
+From: Oleksandr Grytsov <oleksandr_grytsov@epam.com>
+Date: Tue, 4 Sep 2018 21:52:11 +0300
+Subject: [PATCH 3/3] add CGO_ENABLED variable
+
+Signed-off-by: Oleksandr Grytsov <oleksandr_grytsov@epam.com>
+---
+ classes/go.bbclass | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/oe-meta-go/classes/go.bbclass b/classes/go.bbclass
+index cc53301..e24f12c 100644
+--- a/oe-meta-go/classes/go.bbclass
++++ b/oe-meta-go/classes/go.bbclass
+@@ -12,6 +12,7 @@ GOROOT_class-native = "${STAGING_LIBDIR_NATIVE}/go"
+ GOROOT = "${STAGING_LIBDIR_NATIVE}/${TARGET_SYS}/go"
+ GOBIN_FINAL_class-native = "${GOROOT_FINAL}/bin"
+ GOBIN_FINAL = "${GOROOT_FINAL}/bin/${GOOS}_${GOARCH}"
++GO_CGO_ENABLED ?= "0"
+ 
+ export GOOS = "linux"
+ export GOARCH = "${@map_go_arch(d.getVar('TARGET_ARCH', True), d)}"
+@@ -26,6 +27,7 @@ export CGO_CFLAGS = "${TARGET_CC_ARCH}${TOOLCHAIN_OPTIONS} ${TARGET_CFLAGS}"
+ export CGO_CPPFLAGS = "${TARGET_CPPFLAGS}"
+ export CGO_CXXFLAGS = "${TARGET_CC_ARCH}${TOOLCHAIN_OPTIONS} ${TARGET_CXXFLAGS}"
+ export CGO_LDFLAGS = "${TARGET_CC_ARCH}${TOOLCHAIN_OPTIONS} ${TARGET_LDFLAGS}"
++export CGO_ENABLED = "${GO_CGO_ENABLED}"
+ 
+ DEPENDS += "go-cross-${TARGET_ARCH}"
+ DEPENDS_class-native += "go-native"
+-- 
+2.17.1
+

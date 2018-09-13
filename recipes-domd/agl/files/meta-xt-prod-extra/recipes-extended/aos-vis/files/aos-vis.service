@@ -1,0 +1,14 @@
+[Unit]
+Description=AOS VIS
+Requires=telemetry-emulator.service
+After=telemetry-emulator.service
+
+[Service]
+RestartSec=1
+ExecStartPre=/bin/sleep 1
+WorkingDirectory=/var/aos/vis/data
+ExecStart=/usr/bin/aos_vis -c /var/aos/vis/visconfig.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
